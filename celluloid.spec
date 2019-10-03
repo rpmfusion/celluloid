@@ -1,3 +1,4 @@
+%global         _metainfodir  %{_datadir}/metainfo
 Name:           celluloid
 Version:        0.17
 Release:        1%{?dist}
@@ -6,6 +7,10 @@ Summary:        A simple GTK+ frontend for mpv
 License:        GPLv3+
 URL:            https://github.com/celluloid-player/celluloid
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# Patch from Clem's fork
+Patch0:         build_with_mpv27.patch
+# Add configure patch as the packager decided to use autotools
+Patch1:         configure_mpv27.patch
 
 BuildRequires:  gcc
 BuildRequires:  desktop-file-utils
@@ -27,7 +32,7 @@ Celluloid (formerly GNOME MPV) is a simple GTK+ frontend for mpv.
 It aims to be easy to use while maintaining high level of configurability.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure
