@@ -1,12 +1,11 @@
 Name:           celluloid
-Version:        0.17
-Release:        2%{?dist}
+Version:        0.18
+Release:        1%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
 URL:            https://github.com/celluloid-player/celluloid
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Patch0:         6fca3f16616f4f46c1647fe4610e57c8c9ae74ff.patch
 
 BuildRequires:  gcc
 BuildRequires:  desktop-file-utils
@@ -57,6 +56,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Tue Nov 05 2019 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.18-1
+- Update to 0.18
+
 * Mon Sep 23 2019 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.17-2
 - Fix crash #5392
 
