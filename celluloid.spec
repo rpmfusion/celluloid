@@ -1,6 +1,9 @@
+%global optflags %{optflags} -flto=auto
+%global build_ldflags %{build_ldflags} -flto
+
 Name:           celluloid
 Version:        0.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
@@ -30,6 +33,9 @@ It aims to be easy to use while maintaining high level of configurability.
 %autosetup -p1
 
 %build
+export AR=%{_bindir}/gcc-ar
+export RANLIB=%{_bindir}/gcc-ranlib
+export NM=%{_bindir}/gcc-nm
 %configure
 %make_build V=1
 
@@ -56,6 +62,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Tue Apr 21 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.19-2
+- Enable LTO
+
 * Thu Apr 09 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.19-1
 - Update to 0.19
 
