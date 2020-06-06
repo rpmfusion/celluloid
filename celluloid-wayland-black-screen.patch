@@ -1,0 +1,60 @@
+From 132427ea0415796584dbf37012aa3fca5c2d4a83 Mon Sep 17 00:00:00 2001
+From: gnome-mpv <gnome-mpv@nowhere>
+Date: Wed, 27 May 2020 21:59:12 +0700
+Subject: [PATCH] main-window: Don't resize while maximized or in fullscreen
+ mode
+
+Fixes #540.
+---
+ src/celluloid-main-window.c | 35 ++++++++++++++++++++++-------------
+ 1 file changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/src/celluloid-main-window.c b/src/celluloid-main-window.c
+index 7dc2a00..5b46889 100644
+--- a/src/celluloid-main-window.c
++++ b/src/celluloid-main-window.c
+@@ -670,22 +670,31 @@ celluloid_main_window_resize_video_area(	CelluloidMainWindow *wnd,
+ 						gint width,
+ 						gint height )
+ {
+-	CelluloidMainWindowPrivate *priv = get_private(wnd);
++	/* As of GNOME 3.36, attempting to resize the window while it is
++	 * maximized will cause the UI to stop rendering. Resizing while
++	 * fullscreen is unaffected, but it doesn't make sense to resize there
++	 * either.
++	 */
++	if(	!get_private(wnd)->fullscreen &&
++		!gtk_window_is_maximized(GTK_WINDOW(wnd)) )
++	{
++		CelluloidMainWindowPrivate *priv = get_private(wnd);
+ 
+-	g_signal_connect(	priv->vid_area,
+-				"size-allocate",
+-				G_CALLBACK(resize_video_area_finalize),
+-				wnd );
++		g_signal_connect(	priv->vid_area,
++					"size-allocate",
++					G_CALLBACK(resize_video_area_finalize),
++					wnd );
+ 
+-	priv->resize_target[0] = width;
+-	priv->resize_target[1] = height;
+-	resize_to_target(wnd);
++		priv->resize_target[0] = width;
++		priv->resize_target[1] = height;
++		resize_to_target(wnd);
+ 
+-	/* The size may not change, so this is needed to ensure that
+-	 * resize_video_area_finalize() will be called so that the event handler
+-	 * will be disconnected.
+-	 */
+-	gtk_widget_queue_allocate(priv->vid_area);
++		/* The size may not change, so this is needed to ensure that
++		 * resize_video_area_finalize() will be called so that the event handler
++		 * will be disconnected.
++		 */
++		gtk_widget_queue_allocate(priv->vid_area);
++	}
+ }
+ 
+ void

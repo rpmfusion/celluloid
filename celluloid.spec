@@ -3,12 +3,13 @@
 
 Name:           celluloid
 Version:        0.19
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
 URL:            https://github.com/celluloid-player/celluloid
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:         celluloid-wayland-black-screen.patch
 
 BuildRequires:  gcc
 BuildRequires:  desktop-file-utils
@@ -62,6 +63,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Sun May 31 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.19-3
+- Fix wayland blackscreen
+
 * Tue Apr 21 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.19-2
 - Enable LTO
 
