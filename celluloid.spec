@@ -3,7 +3,7 @@
 
 Name:           celluloid
 Version:        0.19
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
@@ -63,6 +63,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Mon Aug 17 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.19-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Sun May 31 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.19-3
 - Fix wayland blackscreen
 
