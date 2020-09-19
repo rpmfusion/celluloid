@@ -1,15 +1,11 @@
-%global optflags %{optflags} -flto=auto
-%global build_ldflags %{build_ldflags} -flto
-
 Name:           celluloid
-Version:        0.19
-Release:        4%{?dist}
+Version:        0.20
+Release:        1%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
 URL:            https://github.com/celluloid-player/celluloid
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Patch0:         celluloid-wayland-black-screen.patch
 
 BuildRequires:  gcc
 BuildRequires:  desktop-file-utils
@@ -34,9 +30,6 @@ It aims to be easy to use while maintaining high level of configurability.
 %autosetup -p1
 
 %build
-export AR=%{_bindir}/gcc-ar
-export RANLIB=%{_bindir}/gcc-ranlib
-export NM=%{_bindir}/gcc-nm
 %configure
 %make_build V=1
 
@@ -63,6 +56,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Sat Sep 19 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.20-1
+- Update to 0.20
+
 * Mon Aug 17 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.19-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
