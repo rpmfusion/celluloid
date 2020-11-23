@@ -1,6 +1,6 @@
 Name:           celluloid
 Version:        0.20
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
@@ -56,6 +56,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Mon Nov 23 2020 Leigh Scott <leigh123linux@gmail.com> - 0.20-2
+- Rebuild for new mpv
+
 * Sat Sep 19 2020 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.20-1
 - Update to 0.20
 
