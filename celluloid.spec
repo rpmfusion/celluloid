@@ -1,6 +1,6 @@
 Name:           celluloid
 Version:        0.22
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
@@ -16,7 +16,7 @@ BuildRequires:  intltool >= 0.40.6
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  mpv-libs-devel
-Requires:       youtube-dl >= 2016.03.06
+Requires:       yt-dlp
 Requires:       hicolor-icon-theme
 
 Provides:       gnome-mpv = %{version}-%{release}
@@ -56,6 +56,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Tue Nov 16 2021 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.22-2
+- Switch to yt-dlp
+
 * Fri Nov 05 2021 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.22-1
 - Update to 0.22
 
