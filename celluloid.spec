@@ -14,7 +14,7 @@ BuildRequires:  gcc
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.6.1
 BuildRequires:  intltool >= 0.40.6
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(epoxy)
