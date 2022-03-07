@@ -7,8 +7,8 @@ License:        GPLv3+
 URL:            https://github.com/celluloid-player/celluloid
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # Fix autofit triggering regardless of settings
-Patch0:         65d0e47fcede58cb78df8e9a29ff669e2287273b.patch
-Patch1:         52a7d396c846eb337ad7796fdb7163e2bc208d64.patch
+#Patch0:         65d0e47fcede58cb78df8e9a29ff669e2287273b.patch
+#Patch1:         52a7d396c846eb337ad7796fdb7163e2bc208d64.patch
 
 BuildRequires:  gcc
 BuildRequires:  desktop-file-utils
