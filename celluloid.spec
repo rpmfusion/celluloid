@@ -1,6 +1,6 @@
 Name:           celluloid
-Version:        0.23
-Release:        2%{?dist}
+Version:        0.24
+Release:        1%{?dist}
 Summary:        A simple GTK+ frontend for mpv
 
 License:        GPLv3+
@@ -19,6 +19,7 @@ BuildRequires:  intltool >= 0.40.6
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  mpv-libs-devel
+BuildRequires:  pkgconfig(libadwaita-1)
 Requires:       yt-dlp
 Requires:       hicolor-icon-theme
 
@@ -59,6 +60,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.celluloid_p
  %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Sun Aug 21 2022 Vasiliy N. Glazov <vascom2@gmail.com>  - 0.24-1
+- Update to 0.24
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.23-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
